@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CameraScreen extends StatelessWidget {
+class CallsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: new Text(
-        "Camera",
+        "Calls",
         style: new TextStyle(fontSize: 20.0) 
         ),
     );
