@@ -31,7 +31,22 @@ class _MyHomePageState extends State<MyHomePage> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
+              buildProfileImageAvatar(),
+              buildDisplayName(),
+              buildLocationWidget(),
+              buildDescriptionWidget(),
+              buildFollowersWidget(), 
+              SizedBox(height: 25.0),   
+              buildGalleryListWidget(),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildProfileImageAvatar() {
+    return Padding(
                 padding: EdgeInsets.only(
                   left:   20.0,
                   right:  20.0, 
@@ -51,8 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   ),
                 ),
-              ), 
-              Padding(
+              );
+  }
+
+Widget buildDisplayName() {
+  return Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
                 child: Text(
                     DISPLAY_NAME,
@@ -62,8 +80,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontSize: 18.0
                   ),
                 ),
-              ),
-              Padding(
+              );
+}
+
+Widget buildLocationWidget() {
+  return Padding(
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Text(
                   LOCATION,
@@ -73,8 +94,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Colors.grey
                   ),
                 ),
-              ),
-              Padding(
+              );
+}
+
+Widget buildDescriptionWidget() {
+  return Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
                 child: Text(
                   DESCRIPTION,
@@ -84,20 +108,34 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontSize: 16.0
                   ),
                 ),
-              ),
-              Padding(
+              );
+}
+
+Widget buildFollowersWidget() {
+  return Padding(
                 padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 25.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    buildFollowersColumn(),
+                    buildFollowingColumn(),
+                    buildLikesColumn(),
+                  ],
+                ),
+              );
+
+}
+
+Widget buildFollowersColumn( ) {
+  return Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text('1521',
                         style: TextStyle(
                           fontFamily: 'Montserrat',
                           color: Colors.red,
-                          fontSize: 18.0
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       Text(FOLLOWERS,
@@ -107,14 +145,74 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       )  
                       ],
-                    )
-                  ],
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
+                    );
 }
+
+Widget buildFollowingColumn( ) {
+  return Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text('142',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18.0
+                        ),
+                      ),
+                      Text(FOLLOWING,
+                      style:TextStyle(
+                        fontFamily: 'Montserrat',
+                        color: Colors.grey,
+                      ),
+                      )  
+                      ],
+                    );
+}
+
+Widget buildLikesColumn( ) {
+  return Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text('868',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          color: Colors.red,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18.0
+                        ),
+                      ),
+                      Text(LIKES,
+                      style:TextStyle(
+                        fontFamily: 'Montserrat',
+                        color: Colors.grey,
+                      ),
+                      )  
+                      ],
+                    );
+}
+
+Widget buildGalleryListWidget() {
+  return Container(
+    padding: EdgeInsets.only(left: 10.0, right: 10.0),
+    height: 200.0,
+    child: ListView(
+      scrollDirection: Axis.horizontal,
+      children: <Widget>[
+        buildPhotoWidget()
+      ],
+    ),
+  );
+}
+
+Widget buildPhotoWidget() {
+  
+}
+
+
+
+
+}
+
+
+
