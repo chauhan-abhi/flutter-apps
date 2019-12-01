@@ -37,7 +37,11 @@ class _MyHomePageState extends State<MyHomePage> {
               buildDescriptionWidget(),
               buildFollowersWidget(), 
               SizedBox(height: 25.0),   
-              buildGalleryListWidget(),
+              buildGalleryListWidget2(200.0),
+              SizedBox(height: 10.0),
+              buildGalleryListWidget3(100.0),
+              SizedBox(height: 10.0),
+              buildBottomBackWidgets()
             ],
           )
         ],
@@ -138,6 +142,7 @@ Widget buildFollowersColumn( ) {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
+                      SizedBox(height: 4.0),
                       Text(FOLLOWERS,
                       style:TextStyle(
                         fontFamily: 'Montserrat',
@@ -160,6 +165,7 @@ Widget buildFollowingColumn( ) {
                           fontSize: 18.0
                         ),
                       ),
+                      SizedBox(height: 4.0),
                       Text(FOLLOWING,
                       style:TextStyle(
                         fontFamily: 'Montserrat',
@@ -182,6 +188,7 @@ Widget buildLikesColumn( ) {
                           fontSize: 18.0
                         ),
                       ),
+                      SizedBox(height: 4.0),
                       Text(LIKES,
                       style:TextStyle(
                         fontFamily: 'Montserrat',
@@ -192,24 +199,89 @@ Widget buildLikesColumn( ) {
                     );
 }
 
-Widget buildGalleryListWidget() {
+Widget buildGalleryListWidget2(double dimensions) {
   return Container(
     padding: EdgeInsets.only(left: 10.0, right: 10.0),
-    height: 200.0,
+    height: dimensions,
     child: ListView(
       scrollDirection: Axis.horizontal,
       children: <Widget>[
-        buildPhotoWidget()
+        buildPhotoWidget(dimensions,"picone.jpeg"),
+        SizedBox(width: 10.0),
+        buildPhotoWidget(dimensions, "pictwo.jpeg"),
+        SizedBox(width: 10.0),
       ],
     ),
   );
 }
 
-Widget buildPhotoWidget() {
-  
+Widget buildGalleryListWidget3(double dimensions) {
+  return Container(
+    padding: EdgeInsets.only(left: 10.0, right: 10.0),
+    height: dimensions,
+    child: ListView(
+      scrollDirection: Axis.horizontal,
+      children: <Widget>[
+        buildPhotoWidget(dimensions,"picthree.jpeg"),
+        SizedBox(width: 10.0),
+        buildPhotoWidget(dimensions, "picfour.jpeg"),
+        SizedBox(width: 10.0),
+        buildPhotoWidget(dimensions, "picfive.jpeg"),
+        SizedBox(width: 10.0),
+      ],
+    ),
+  );
 }
 
+Widget buildPhotoWidget(double dimensions, String picName) {
+  return Container(
+    height: dimensions,
+    width: dimensions,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      image: DecorationImage(
+        image: AssetImage('assets/$picName'),
+        fit: BoxFit.cover
+      )
+    ),
+  );
+}
 
+Widget buildBottomBackWidgets() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: <Widget>[
+      Container(
+        height: 40.0,
+        width: 100.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.0),
+          color: Colors.grey.withOpacity(0.2)
+        ),
+        child: Center(child: Icon(Icons.arrow_back),
+        ),
+      ),
+      Container(
+        height: 40.0,
+        width: 200.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.0),
+          color: Colors.black.withOpacity(0.7)
+        ),
+        child: Center(
+          child: Text(
+            FOLLOW,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Montserrat',
+              fontSize: 18.0
+            ),
+          ),
+        ),
+      )
+    ],
+  );
+}
 
 
 }
